@@ -7,7 +7,7 @@ public class HttpClientService(HttpClient httpClient)
     public async Task<AddressRootObject> GetAddressSuggestion(string addressSearchTerm)
     {
         var addressLookupUrl = "https://api.geoapify.com/v1/geocode/autocomplete" +
-                               "?text=" + addressSearchTerm + "" +
+                               "?text=" + addressSearchTerm +
                                "&format=json&apiKey=" + Environment.GetEnvironmentVariable("GEOCODEAPIKEY");
         var response = await httpClient.GetAsync(addressLookupUrl);
         return JsonSerializer.Deserialize<AddressRootObject>(await response.Content.ReadAsStringAsync()) ??
