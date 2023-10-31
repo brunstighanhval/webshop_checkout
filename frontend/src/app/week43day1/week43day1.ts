@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {firstValueFrom} from "rxjs";
-import {CURRENCYCONVERTERAPIKEY, GEOCODEAPIKEY} from "./apikeys";
 import {
   Address,
   AddressAPIJsonResponseModel,
@@ -51,7 +50,7 @@ export class Week43Day1Component {
     const params: any = {
       text: this.addressField.value,
       format: "json",
-      apiKey: GEOCODEAPIKEY
+      apiKey: "f7649a74e185494d9f19ce713aea0073"
     };
     const observable = this.http.get<AddressAPIJsonResponseModel>(address, {params: params});
     const addressResult = await firstValueFrom<AddressAPIJsonResponseModel>(observable);
@@ -72,7 +71,7 @@ export class Week43Day1Component {
     const params: any = {
       base_currency: "DKK",
       currencies: await this.getCurrenciesForAddress(address),
-      apikey: CURRENCYCONVERTERAPIKEY
+      apikey: "fca_live_3USNOLRGMRxl0TWzKlZ6SwQTJEH6W7foXroag5XF"
     }
     const observable = this.http.get<CurrencyConverterAPIJsonResponseModel>(url, {params: params});
     const currencyConversionResult = await firstValueFrom<CurrencyConverterAPIJsonResponseModel>(observable);
